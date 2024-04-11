@@ -20,6 +20,7 @@ connection_params = {
     "account": os.environ.get("SNOWFLAKE_ACCOUNT"),
     "user": os.environ.get("SNOWFLAKE_USER"),
     "password": os.environ.get("SNOWFLAKE_PASSWORD"),
+    "role": os.environ.get("SNOWFLAKE_ROLE")
 }
 
 
