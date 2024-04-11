@@ -116,7 +116,7 @@ def _plan(remote_state, manifest) -> List[ResourceChange]:
     for urn_str in marked_for_replacement:
         changes.append(ResourceChange(DiffAction.REMOVE, change.urn, remote_state[urn_str]))
         changes.append(ResourceChange(DiffAction.ADD, change.urn, manifest[urn_str]))
-    return sorted(changes, key=lambda change: sort_order[change[1]])
+    return sorted(changes, key=lambda change: sort_order[change])
 
 
 def _walk(resource: Resource):
@@ -306,7 +306,7 @@ def _fetch_remote_state(session, manifest):
     urns = set(manifest["_urns"].copy())
 
     # FIXME
-    session.cursor().execute("USE ROLE ACCOUNTADMIN")
+    # session.cursor().execute("USE ROLE ACCOUNTADMIN")
 
     for urn_str, _data in manifest.items():
         if urn_str.startswith("_"):
